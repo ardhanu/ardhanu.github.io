@@ -182,7 +182,7 @@ function printData(title) {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: between;
             gap: 20px;
             align-items: center;
         }
@@ -240,41 +240,36 @@ function printData(title) {
     // Clone the table container
     let clonedDivToPrint = divToPrint.cloneNode(true);
 
-    // Save the current body content
-    const originalContent = document.body.innerHTML;
-
-    // Replace the body content with the print content
-    document.body.innerHTML = `
-        <div class="letterhead">
-            <div>
-                <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
+    document.write(`
+        <html>
+        <head>
+            <title>Print</title>
+            <style>${css}</style>
+        </head>
+        <body>
+            <div class="letterhead">
+                <div>
+                    <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
+                </div>
+                <div> 
+                    <h1>ALMERA COMPUTER</h1>
+                    <h2>Sales New & Second</h2>
+                    <h2>Computer, Notebook, Maintenance, Service</h2>
+                    <p>Harco Mangga Dua Lt.2 Blok A No 72 Jl. Mangga Dua Raya, Jakarta 10730</p>
+                </div>
             </div>
-            <div> 
-                <h1>ALMERA COMPUTER</h1>
-                <h2>Sales New & Second</h2>
-                <h2>Computer, Notebook, Maintenance, Service</h2>
-                <p>Harco Mangga Dua Lt.2 Blok A No 72 Jl. Mangga Dua Raya, Jakarta 10730</p>
-            </div>
-        </div>
-        <div class="Judul-Tabel">${title}</div>
-        <div class="time">${formattedDate}</div>
-        ${clonedDivToPrint.outerHTML}
-    `;
-
-    // Add print-specific styles
-    const style = document.createElement('style');
-    style.textContent = css;
-    document.head.appendChild(style);
-
-    // Trigger print
-    window.print();
+            <div class="Judul-Tabel">${title}</div>
+            <div class="time">${formattedDate}</div>
+            ${clonedDivToPrint.outerHTML}
+        </body>
+        </html>
+    `);
 
     // Restore the original content after printing
     setTimeout(() => {
         document.body.innerHTML = originalContent;
-    }, 1000);
+    }, 0);
 }
-
 
 
 
