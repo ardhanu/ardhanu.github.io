@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CETAK DOCUMENT</title>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/print.css" media="print" />
+	</head>
+	<body>
+		<div class="card">
+			<h5 class="card-title">Pilih dan Cetak Data</h5>
+			<select id="select-table" class="dropdown">
+				<option value="Data Pelanggan">Data Pelanggan</option>
+				<option value="Data Kerusakan">Data Kerusakan</option>
+				<option value="Data Gejala">Data Gejala</option>
+				<option value="Hasil Diagnosa">Hasil Diagnosa</option>
+				<option value="Detail Diagnosa">Detail Diagnosa</option>
+			</select>
+			<button id="fetchData" class="button-ambil-data">AMBIL DATA</button>
+			<button id="cetakData" class="button-cetak-data">CETAK DATA</button>
+			<div id="table-container">
+
+			</div>
+		</div>
+		
+		<script src="/jawa/fetch.js"></script>
+	</body>
+</html>

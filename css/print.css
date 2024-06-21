@@ -1,0 +1,85 @@
+/* Reset styles to ensure consistency across browsers */
+
+@media print {
+	/* Custom styles for printing */
+
+	/* Header styles */
+	.header {
+		font-family: "Arial", sans-serif;
+		
+		font-weight: bold;
+		text-align: center;
+	}
+
+	/* Ensure text color changes are applied */
+	.letterhead h1,
+	.letterhead h2 {
+		color: blueviolet !important; /* Use !important to ensure color applies */
+		margin-block-start: 0em; /* Remove top margin */
+		margin-block-end: 0em; /* Remove bottom margin */
+	}
+
+	/* Specifically for h1, add some bottom margin to create space between h1 and h2 */
+	.letterhead h1 {
+		margin-block-end: 0.5em; /* Adjust this value as needed */
+		font-size: 24pt;
+		margin-bottom: 0px !important; /* Use !important to ensure override */
+	}
+
+	/* Adjust the h2 elements inside .letterhead */
+	.letterhead h2 {
+		margin-top: 0px !important; /* Use !important to ensure override */
+		margin-bottom: 0px;
+		font-size: 12pt;
+	}
+
+	/* Content styles */
+	.content {
+		font-family: "Times New Roman", serif;
+		font-size: 12pt;
+		margin: 20px;
+	}
+
+	/* Table styles */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-top: 20px;
+	}
+
+	th,
+	td {
+		border: 1px solid #888;
+		padding: 8px;
+		text-align: left;
+	}
+
+	th {
+		background-color: #f2f2f2;
+		font-weight: bold;
+	}
+
+	/* Avoid printing background colors and images */
+	body,
+	article,
+	aside,
+	details,
+	figcaption,
+	figure,
+	footer,
+	header,
+	hgroup,
+	menu,
+	nav,
+	section {
+		background: none !important;
+		color: #000; /* Ensure legible text color */
+	}
+
+	/* Hide elements not needed or unsuitable for print */
+	.no-print,
+	nav,
+	footer {
+		display: none !important;
+	}
+}
