@@ -171,12 +171,6 @@ function printData(title) {
 
     // Replace the body content with the print content
     document.body.innerHTML = `
-        <html>
-        <head>
-            <title>Print</title>
-            <style>${css}</style>
-        </head>
-        <body>
             <div class="letterhead">
                 <div>
                     <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
@@ -190,8 +184,6 @@ function printData(title) {
             </div>
             <div class="Judul-Tabel">${title}</div>
             <div class="time">${formattedDate}</div>
-        </body>
-        </html>
     `;
 
     // Add print-specific styles
