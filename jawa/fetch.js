@@ -171,20 +171,27 @@ function printData(title) {
 
     // Replace the body content with the print content
     document.body.innerHTML = `
-        <div class="letterhead">
-            <div>
-                <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
+        <html>
+        <head>
+            <title>Print</title>
+            <style>${css}</style>
+        </head>
+        <body>
+            <div class="letterhead">
+                <div>
+                    <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
+                </div>
+                <div> 
+                    <h1>ALMERA COMPUTER</h1>
+                    <h2>Sales New & Second</h2>
+                    <h2>Computer, Notebook, Maintenance, Service</h2>
+                    <p>Harco Mangga Dua Lt.2 Blok A No 72 Jl. Mangga Dua Raya, Jakarta 10730</p>
+                </div>
             </div>
-            <div> 
-                <h1>ALMERA COMPUTER</h1>
-                <h2>Sales New & Second</h2>
-                <h2>Computer, Notebook, Maintenance, Service</h2>
-                <p>Harco Mangga Dua Lt.2 Blok A No 72 Jl. Mangga Dua Raya, Jakarta 10730</p>
-            </div>
-        </div>
-        <div class="Judul-Tabel">${title}</div>
-        <div class="time">${formattedDate}</div>
-        ${divToPrint.outerHTML}
+            <div class="Judul-Tabel">${title}</div>
+            <div class="time">${formattedDate}</div>
+        </body>
+        </html>
     `;
 
     // Add print-specific styles
