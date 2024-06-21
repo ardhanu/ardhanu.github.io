@@ -270,10 +270,15 @@ function printData(title) {
     // Restore the original content after printing
     setTimeout(() => {
         document.body.innerHTML = originalContent;
-    }, 1000);
+    }, 0);
 
 	    // Trigger print
     window.print();
+
+	    // Restore the original content after printing
+    setTimeout(() => {
+        document.body.innerHTML = originalContent;
+    }, 1000);
 }
 
 
