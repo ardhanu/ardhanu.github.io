@@ -269,6 +269,9 @@ function printData(title) {
     setTimeout(() => {
         document.body.innerHTML = originalContent;
     }, 1000);
+
+	    // Trigger print
+    window.print();
 }
 
 
