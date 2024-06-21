@@ -190,59 +190,80 @@ function printData(title) {
     // Add print-specific styles
     const style = document.createElement('style');
     style.textContent = `
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-            }
-            .letterhead, .letterfoot {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 20px; 
-            }
-            .letterhead {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                gap: 20px;
-                align-items: center;
-            }
-            .letterhead h1 {
-                font-size: 32px;
-                color: red;
-                margin-bottom: 10pt;
-            }
-            .letterhead h2, .letterhead p {
-                margin: 0;
-                font-size: 24px;
-                color: blue;
-            }
-            .letterfoot {
-                position: fixed;
-                bottom: 0;
-                padding-bottom: 20px;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px; 
-            }
-            th, td {
-                border: 1px solid black;
-                padding: 8px;
-                text-align: left;
-                background-color: #f2f2f2;
-            }
-            .time, .Judul-Tabel {
-                text-align: center;
-                font-size: 24px;
-                color: black;
-                font-weight: bold;
-            }
-        }
-    `;
+		@media print {
+				body {
+						margin: 0;
+						padding: 0;
+						font-family: Arial, sans-serif;
+				}
+				.letterhead, .letterfoot {
+						width: 100%;
+						text-align: center;
+						margin-bottom: 20px; 
+				}
+				.letterhead {
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						justify-content: between;
+						gap: 20px;
+						align-items: center;
+				}
+
+				.letterhead h1 {
+						font-size: 32px;
+						color: red;
+						margin-bottom: 10pt;
+				}
+
+				.letterhead h2 {
+						margin: 0;
+						font-size: 24px;
+						color: blue;
+				}
+
+				.letterhead p {
+						margin-bottom: 0;
+						margin-left: 0;
+						margin-right: 0;
+						margin-top: 10pt;
+						font-size: 16px;
+						color: blue;
+				}
+
+				.letterfoot {
+						position: fixed;
+						bottom: 0;
+						padding-bottom: 20px;
+				}
+				table {
+						width: 100%;
+						border-collapse: collapse;
+						margin-top: 20px; 
+				}
+				th {
+						border: 1px solid black;
+						padding: 8px;
+						text-align: center;
+						background-color: #f2f2f2;
+				}
+				td {
+						border: 1px solid black;
+						padding: 8px;
+						text-align: left;
+				}
+				.time {
+					text-align: right;
+				}
+
+				.Judul-Tabel {
+					font-size: 24px;
+					color: black;
+					font-weight: bold;
+					text-align: center;
+				}
+		}
+`;
     document.head.appendChild(style);
 
     // Trigger print
