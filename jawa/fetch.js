@@ -6,15 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Panggil `printData()` ketika tombol "CETAK DATA" diklik
-    document.getElementById("cetakData").addEventListener("click", function () {
-        const selectedDataType = document.getElementById("select-table").value;
-        // Panggil `fetchDataAndPopulateTable()` terlebih dahulu jika diperlukan
-        fetchDataAndPopulateTable(selectedDataType, function () {
-            // Setelah tabel dipopulasi, panggil `printData()`
-            printData(selectedDataType);
-        });
-    });
+document.getElementById("cetakData").addEventListener("click", function () {
+    const selectedDataType = document.getElementById("select-table").value;
+    // Panggil metode printData() yang telah diubah menjadi panggilan ke Android.printData()
+    Android.printData(selectedDataType);
 });
+
 
 function fetchDataAndPopulateTable(dataType, callback) {
     const apiUrl = getApiUrlForDataType(dataType);
