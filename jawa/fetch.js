@@ -1,16 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
-	// Fetch data when "AMBIL DATA" button is clicked
-	document.getElementById("fetchData").addEventListener("click", function () {
-			const selectedDataType = document.getElementById("select-table").value;
-			fetchDataAndPopulateTable(selectedDataType);
-	});
+    // Panggil `fetchDataAndPopulateTable()` ketika tombol "AMBIL DATA" diklik
+    document.getElementById("fetchData").addEventListener("click", function () {
+        const selectedDataType = document.getElementById("select-table").value;
+        fetchDataAndPopulateTable(selectedDataType);
+    });
 
-	// Print data when "CETAK DATA" button is clicked
-	document.getElementById("cetakData").addEventListener("click", function () {
-			const selectedDataType = document.getElementById("select-table").value;
-			printData(selectedDataType);
-	});
+    // Panggil `printData()` ketika tombol "CETAK DATA" diklik
+    document.getElementById("cetakData").addEventListener("click", function () {
+        const selectedDataType = document.getElementById("select-table").value;
+        // Panggil `fetchDataAndPopulateTable()` terlebih dahulu jika diperlukan
+        fetchDataAndPopulateTable(selectedDataType, function () {
+            // Setelah tabel dipopulasi, panggil `printData()`
+            printData(selectedDataType);
+        });
+    });
 });
+
 function fetchDataAndPopulateTable(dataType, callback) {
     const apiUrl = getApiUrlForDataType(dataType);
     fetch(apiUrl)
