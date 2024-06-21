@@ -156,7 +156,6 @@ function getKeyFromHeader(header, dataType) {
 
 function printData(title) {
     let divToPrint = document.getElementById("table-container");
-    let newWin = window.open("");
     const date = new Date();
     const day = date.getDate().toString().padStart(2, "0");
     const months = [
@@ -241,7 +240,7 @@ function printData(title) {
     // Clone the table container
     let clonedDivToPrint = divToPrint.cloneNode(true);
 
-    newWin.document.write(`
+    document.write(`
         <html>
         <head>
             <title>Print</title>
@@ -266,12 +265,13 @@ function printData(title) {
         </html>
     `);
 
-    newWin.document.close();
+    // Trigger print
+    window.print();
+
+    // Restore the original content after printing
     setTimeout(() => {
-        newWin.focus();
-        newWin.print();
-        newWin.close();
-    }, 1000); // Delay to ensure content is loaded, adjust as necessary
+        document.body.innerHTML = originalContent;
+    }, 1000);
 }
 
 
