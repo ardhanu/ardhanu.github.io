@@ -267,15 +267,12 @@ function printData(title) {
         </html>
     `);
 
-    // Restore the original content after printing
-    setTimeout(() => {
-        document.body.innerHTML = originalContent;
-    }, 0);
-
-	    // Trigger print
-    window.print();
-
 	    // Restore the original content after printing
+    setTimeout(() => {
+        window.print();
+    }, 2000);
+
+    // Restore the original content after printing
     setTimeout(() => {
         document.body.innerHTML = originalContent;
     }, 1000);
