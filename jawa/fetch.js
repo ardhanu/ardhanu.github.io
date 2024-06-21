@@ -154,127 +154,58 @@ function getKeyFromHeader(header, dataType) {
 }
 
 function printData(title) {
-    let divToPrint = document.getElementById("table-container");
-    let newWin = window.open("");
-    const date = new Date();
-    const day = date.getDate().toString().padStart(2, "0");
-    const months = [
-        "Januari", "Febuari", "Maret", "April", "Mei", "Juni",
-        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-    ];
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    const formattedDate = `${day} - ${month} - ${year}`; // dd-mmm-yyyy
+    const isAndroid = /Android/.test(navigator.userAgent);
+    let divToPrint = document.getElementById("table-container").innerHTML;
+    let iframe;
 
-		let css = `
-		@media print {
-				body {
-						margin: 0;
-						padding: 0;
-						font-family: Arial, sans-serif;
-				}
-				.letterhead, .letterfoot {
-						width: 100%;
-						text-align: center;
-						margin-bottom: 20px; 
-				}
-				.letterhead {
-						display: flex;
-						flex-direction: row;
-						flex-wrap: wrap;
-						justify-content: between;
-						gap: 20px;
-														align-items: center;
-				}
+    if (iframe) {
+        iframe.parentNode.removeChild(iframe);
+    }
 
-				.letterhead h1 {
-						font-size: 32px;
-						color: red;
-						margin-bottom: 10pt;
-				}
+    iframe = document.createElement("iframe");
+    iframe.style.cssText =
+        "width: 1px; height: 1px; position: fixed; left: 0; top: 0; opacity: 0; border-width: 0; margin: 0; padding: 0";
+    document.body.appendChild(iframe);
 
-				.letterhead h2 {
-						margin: 0;
-						font-size: 24px;
-						color: blue;
-				}
+    const printContent = () => {
+        const doc = iframe.contentWindow.document;
+        doc.open();
+        doc.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Print</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                    }
+                    /* Additional styles */
+                </style>
+            </head>
+            <body>
+                ${divToPrint}
+            </body>
+            </html>
+        `);
+        doc.close();
 
-				.letterhead p {
-						margin-bottom: 0;
-						margin-left: 0;
-						margin-right: 0;
-						margin-top: 10pt;
-						font-size: 16px;
-						color: blue;
-				}
+        setTimeout(() => {
+            iframe.contentWindow.focus();
+            iframe.contentWindow.print();
+        }, 1000);
+    };
 
-				.letterfoot {
-						position: fixed;
-						bottom: 0;
-						padding-bottom: 20px;
-				}
-				table {
-						width: 100%;
-						border-collapse: collapse;
-						margin-top: 20px; 
-				}
-				th {
-						border: 1px solid black;
-						padding: 8px;
-						text-align: center;
-						background-color: #f2f2f2;
-				}
-				td {
-						border: 1px solid black;
-						padding: 8px;
-						text-align: left;
-				}
-										.time {
-														text-align: right;
-										}
-
-										.Judul-Tabel {
-														font-size: 24px;
-														color: black;
-														font-weight: bold;
-														text-align: center;
-}
-		}
-`;
-    // Clone the table container
-    let clonedDivToPrint = divToPrint.cloneNode(true);
-
-    newWin.document.write(`
-        <html>
-        <head>
-            <title>Print</title>
-            <style>${css}</style>
-        </head>
-        <body>
-            <div class="letterhead">
-                <div>
-                    <img src="/images/alomerah.jpg" alt="ALMERA COMPUTER" width="125" height="100">
-                </div>
-                <div> 
-                    <h1>ALMERA COMPUTER</h1>
-                    <h2>Sales New & Second</h2>
-                    <h2>Computer, Notebook, Maintenance, Service</h2>
-                    <p>Harco Mangga Dua Lt.2 Blok A No 72 Jl. Mangga Dua Raya, Jakarta 10730</p>
-                </div>
-            </div>
-            <div class="Judul-Tabel">${title}</div>
-            <div class="time">${formattedDate}</div>
-        </body>
-        </html>
-    `);
-
-    // Append the cloned table to the new window's body
-    newWin.document.body.appendChild(clonedDivToPrint);
-
-    newWin.document.close();
-    setTimeout(() => {
-        newWin.focus();
-        newWin.print();
-        newWin.close();
-    }, 1000); // Delay to ensure content is loaded, adjust as necessary
+    if (isAndroid) {
+        const newWindow = window.open("", "_blank");
+        if (newWindow) {
+            newWindow.document.write(divToPrint);
+            // You might need to adjust the styles and content for the new window
+        }
+    } else {
+        printContent();
+    }
 }
