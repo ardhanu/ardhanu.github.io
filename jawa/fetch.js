@@ -67,11 +67,11 @@ data.forEach((item, index) => {
 function getApiUrlForDataType(dataType) {
 	// Map the dataType to your API endpoints
 	const apiUrlMap = {
-		"Data Pelanggan": "http://localhost:3000/pelanggan",
-		"Data Kerusakan": "http://localhost:3000/kerusakan",
-		"Data Gejala": "http://localhost:3000/gejala",
-		"Hasil Diagnosa": "http://localhost:3000/hasil-diagnosa",
-		"Detail Diagnosa": "http://localhost:3000/hasil-diagnosa/detail",
+		"Data Pelanggan": "http://58vpq4m8-3000.asse.devtunnels.ms/pelanggan",
+		"Data Kerusakan": "http://58vpq4m8-3000.asse.devtunnels.ms/kerusakan",
+		"Data Gejala": "http://58vpq4m8-3000.asse.devtunnels.ms/gejala",
+		"Hasil Diagnosa": "http://58vpq4m8-3000.asse.devtunnels.ms/hasil-diagnosa",
+		"Detail Diagnosa": "http://58vpq4m8-3000.asse.devtunnels.ms/hasil-diagnosa/detail",
 		//http://localhost:3000
 	};
 	return apiUrlMap[dataType];
