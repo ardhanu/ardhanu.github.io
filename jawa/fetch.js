@@ -166,7 +166,7 @@ function printData(title) {
     ];
     const month = months[date.getMonth()];
     const year = date.getFullYear();
-    const formattedDate = `${day} - ${month} - ${year}`; // dd-mmm-yyyy
+    const formattedDate = `${day} ${month} ${year}`; // dd-mmm-yyyy
 
     let css = `
     @media print {
@@ -210,6 +210,17 @@ function printData(title) {
             position: fixed;
             bottom: 0;
             padding-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            margin-right: 50px;
+        }
+        .signature {
+            text-align: right;
+            margin-top: 50px;
+        }
+        .signature p {
+            margin: 0;
         }
         table {
             width: 100%;
@@ -261,13 +272,20 @@ function printData(title) {
                 </div>
             </div>
             <div class="Judul-Tabel">${title}</div>
-            <div class="time">${formattedDate}</div>
             ${clonedDivToPrint.outerHTML}
+            <div class="letterfoot">
+                <div class="signature">
+                    <p>Jakarta, ${formattedDate}</p>
+                    <p>Pemilik Toko</p>
+                    <br><br><br><br>
+                    <p>Taufik</p>
+                </div>
+            </div>
         </body>
         </html>
     `);
 
-	    // Restore the original content after printing
+    // Restore the original content after printing
     setTimeout(() => {
         window.print();
     }, 2000);
