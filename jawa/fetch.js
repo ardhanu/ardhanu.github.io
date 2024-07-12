@@ -273,13 +273,11 @@ function printData(title) {
             </div>
             <div class="Judul-Tabel">${title}</div>
             ${clonedDivToPrint.outerHTML}
-            <div class="letterfoot">
-                <div class="signature">
-                    <p>Jakarta, ${formattedDate}</p>
-                    <p>Pemilik Toko</p>
-                    <br><br><br><br>
-                    <p>Taufik</p>
-                </div>
+            <div class="signature">
+                <p>Jakarta, ${formattedDate}</p>
+                <p>Pemilik Toko</p>
+                <br><br><br><br>
+                <p>Taufik</p>
             </div>
         </body>
         </html>
@@ -295,6 +293,7 @@ function printData(title) {
         document.body.innerHTML = originalContent;
     }, 1000);
 }
+
 
 
 
